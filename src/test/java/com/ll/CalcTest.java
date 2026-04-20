@@ -1,10 +1,9 @@
 package com.ll;
 
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalcTest {
     @Test
@@ -25,10 +24,28 @@ public class CalcTest {
         assertThat(Calc.run("2 + 2")).isEqualTo(4);
     }
 
-
     @Test
     @DisplayName("1000 + 280 == 1280")
     void t4() {
         assertThat(Calc.run("1000 + 280")).isEqualTo(1280);
     }
+
+    @Test
+    @DisplayName("2 - 1 == 1")
+    void t5() {
+        assertThat(Calc.run("2 - 1")).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("3 - 1 == 2")
+    void t6() {
+        assertThat(Calc.run("3 - 1")).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("100 - 20 == 80")
+    void t7() {
+        assertThat(Calc.run("100 - 20")).isEqualTo(80);
+    }
+
 }
