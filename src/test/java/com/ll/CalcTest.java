@@ -84,5 +84,4 @@ public class CalcTest {
         assertThat(Calc.run("10 * -10")).isEqualTo(-100);
     }
 
-
 }
