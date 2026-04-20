@@ -23,6 +23,7 @@ public class Calc {
 
             result += current;
             current = -num;
+
         }
 
         return result + current;
