@@ -2,16 +2,21 @@ package com.ll;
 
 public class Calc {
     public static int run(String expression) {
-        String operator = expression.contains(" + ") ? "+" : "-";
-        String[] expressionBits = expression.split(" \\" + operator + " ");
+        String[] bits = expression.split(" ");
+        int result = Integer.parseInt(bits[0]);
 
-        int num1 = Integer.parseInt(expressionBits[0]);
-        int num2 = Integer.parseInt(expressionBits[1]);
+        for (int i = 1; i < bits.length; i += 2) {
+            String operator = bits[i];
+            int num = Integer.parseInt(bits[i + 1]);
 
-        if (operator.equals("+")) {
-            return num1 + num2;
+            if (operator.equals("+")) {
+                result += num;
+                continue;
+            }
+
+            result -= num;
         }
 
-        return num1 - num2;
+        return result;
     }
 }
