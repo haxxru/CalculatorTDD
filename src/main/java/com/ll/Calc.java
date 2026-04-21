@@ -2,6 +2,12 @@ package com.ll;
 
 public class Calc {
     public static int run(String expression) {
+        expression = expression.trim();
+
+        if (isWrappedByBrackets(expression)) {
+            return run(expression.substring(1, expression.length() - 1));
+        }
+
         String[] bits = expression.split(" ");
         int result = 0;
         int current = Integer.parseInt(bits[0]);
@@ -27,5 +33,9 @@ public class Calc {
         }
 
         return result + current;
+    }
+
+    private static boolean isWrappedByBrackets(String expression) {
+        return expression.startsWith("(") && expression.endsWith(")");
     }
 }
