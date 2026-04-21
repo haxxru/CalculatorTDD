@@ -4,6 +4,18 @@ public class Calc {
     public static int run(String expression) {
         expression = expression.trim();
 
+        if (expression.contains("(")) {
+            int openIndex = expression.lastIndexOf("(");
+            int closeIndex = expression.indexOf(")", openIndex);
+            String bracketExpression = expression.substring(openIndex + 1, closeIndex);
+            int bracketResult = run(bracketExpression);
+            String replacedExpression = expression.substring(0, openIndex)
+                    + bracketResult
+                    + expression.substring(closeIndex + 1);
+
+            return run(replacedExpression);
+        }
+
         if (isWrappedByBrackets(expression)) {
             return run(expression.substring(1, expression.length() - 1));
         }
